@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { Link } from "react-router-dom";
 import loginBaner from '../../../../public/login.jpg'
+import Sociallogin from '../Sociallogin';
 
 const Regster = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -58,6 +59,7 @@ const Regster = () => {
                                 </div>
                             </div>
                         </form>
+                        <Sociallogin></Sociallogin>
 
                     </div>
                     <div className="text-center lg:text-left m-5">
