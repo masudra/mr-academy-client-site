@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import loginBaner from '../../../../public/login.jpg'
 import Sociallogin from '../Sociallogin';
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const Regster = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -19,7 +20,9 @@ const Regster = () => {
 
     return (
         <div>
-
+           <Helmet>
+                <title>Mr Academy || Regster </title>
+            </Helmet>
             <div className="hero min-h-screen bg-base-200 ">
                 <div className="hero-content flex-col lg:flex-row-reverse">
 

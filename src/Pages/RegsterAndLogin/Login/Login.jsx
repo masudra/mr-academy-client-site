@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import loginBaner from '../../../../public/login.jpg'
 import Sociallogin from "../Sociallogin";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -16,6 +17,9 @@ const Login = () => {
     };
     return (
         <div>
+            <Helmet>
+                <title>Mr Academy || Login </title>
+            </Helmet>
 
             <div className="hero min-h-screen bg-base-200 coverimg">
                 <div>
