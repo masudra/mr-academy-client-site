@@ -9,7 +9,7 @@ import { useState } from "react";
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const [show, setShow]= useState(false)
+    const [show, setShow] = useState(false)
 
     const onSubmit = data => {
         console.log(data)
@@ -29,25 +29,21 @@ const Login = () => {
                                         <label className="label">
                                             <span className="label-text">Email</span>
                                         </label>
-                                        <input type="email"  {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered"/>
+                                        <input type="email"  {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" />
                                         {errors.email && <span className='text-red-600'>Email is required</span>}
-
                                     </div>
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text">Password</span>
                                         </label>
-                                        <input type={show?"text":"Password"} {...register("password", { required: true, minLength: 6, maxLength: 20 })} name="password" placeholder="password" className="input input-bordered" />
-                                       <div className="text-xl my-2 " onClick={() => setShow(!show)}>
-            
-                                        {
-                                           show?  <p className="flex "><input className="w-[25px] h-[25px] "  type="checkbox" checked></input><span className="ml-2">Hide Password</span></p>:<p className="flex "> <input  className="w-[25px] h-[25px]" type="checkbox"></input><span className="ml-2">Show Password</span></p>
-                                        }
-                                       </div>
-                                        {errors.password && <span className='text-red-600'>Password is required </span>}
-                                        {errors.password?.type === 'minLength' && <p className='text-red-600' role="alert">Password is required min 6 </p>}
-                                        {errors.password?.type === 'maxLength' && <p className='text-red-600' role="alert">Password is required max 20 </p>}
+                                        <input type={show ? "text" : "Password"} {...register("password", { required: true, minLength: 6, maxLength: 20 })} name="password" placeholder="password" className="input input-bordered" />
+                                        <div className="text-xl my-2 " onClick={() => setShow(!show)}>
 
+                                            {
+                                                show ? <p className="flex "><input className="w-[25px] h-[25px] " type="checkbox" checked></input><span className="ml-2">Hide Password</span></p> : <p className="flex "> <input className="w-[25px] h-[25px]" type="checkbox"></input><span className="ml-2">Show Password</span></p>
+                                            }
+                                        </div>
+                                        {errors.password && <span className='text-red-600'>Password is required </span>}
 
                                         <label className="label">
                                             <p className="label-text-alt  text-xl">New here? <Link className=' link link-hover  text-orange-600' to='/regster'> Create a New Account</Link></p>

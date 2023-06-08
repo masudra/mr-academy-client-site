@@ -2,12 +2,19 @@ import { useForm } from 'react-hook-form';
 import { Link } from "react-router-dom";
 import loginBaner from '../../../../public/login.jpg'
 import Sociallogin from '../Sociallogin';
+import { useState } from 'react';
 
 const Regster = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [error, setError] = useState('')
 
     const onSubmit = data => {
         console.log(data)
+        if (data.password !== data.confirmPassword) {
+            setError('password did not match');
+            return
+
+        }
     };
 
     return (
@@ -27,33 +34,55 @@ const Regster = () => {
                                     {errors.email && <span className='text-red-600'>Email is required</span>}
 
                                 </div>
+                                {/* Password */}
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input type="password"  {...register("password", { required: true, minLength: 6, maxLength: 20 })} name="password" placeholder="Password" className="input input-bordered" />
+                                    <input type="password"  {...register("password", { required: true, minLength: 6, maxLength: 20, pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z].*)/ })} name="password" placeholder="Password" className="input input-bordered" />
                                     {errors.password && <span className='text-red-600'>Password is required </span>}
                                     {errors.password?.type === 'minLength' && <p className='text-red-600' role="alert">Password is required min 6 </p>}
                                     {errors.password?.type === 'maxLength' && <p className='text-red-600' role="alert">Password is required max 20 </p>}
+                                    {errors.password?.type === 'pattern' && <p className='text-red-600' role="alert"> password must one upper case, one lower case, one number, one special character </p>}
+
+                                </div>
+                                {/*confirm  Password */}
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Confirm Password</span>
+                                    </label>
+                                    <input type="password"  {...register("confirmPassword", { required: true,minLength: 6,maxLength: 20,
+                                    })} name="confirmPassword" placeholder="Confir Password" className="input input-bordered" />
+                                    {errors.password && <span className='text-red-600'>Password is required </span>}
+                                    {errors.password?.type === 'minLength' && <p className='text-red-600' role="alert">Password is required min 6 </p>}
+                                    {errors.password?.type === 'maxLength' && <p className='text-red-600' role="alert">Password is required max 20 </p>}
+                                 
+                                    <p className='text-red-600'>{error}</p>
 
 
                                 </div>
+
+                                {/* Name */}
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Name</span>
                                     </label>
                                     <input type="text"  {...register("name", { required: true })} name="name" placeholder="Name" className="input input-bordered" />
                                     {errors.name && <span className='text-red-600'>Name is required</span>}
+                                </div>
+                                {/* Photo Url */}
+                                <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Photo URL</span>
                                     </label>
                                     <input type="text"  {...register("photo", { required: true })} name="photo" placeholder="Photo URL" className="input input-bordered" />
                                     {errors.photo && <span className='text-red-600'>Name is required</span>}
-
-                                    <label className="label">
-                                        <p className="label-text-alt text-xl"> Already registered? <Link className=' link link-hover  text-orange-600' to='/login'>Go to log in</Link></p>
-                                    </label>
                                 </div>
+
+                                <label className="label">
+                                    <p className="label-text-alt text-xl"> Already registered? <Link className=' link link-hover  text-orange-600' to='/login'>Go to log in</Link></p>
+                                </label>
+
                                 <div className="form-control mt-6">
                                     <input className="btn btn-primary" type="submit" value="Regster" />
                                 </div>
@@ -67,10 +96,10 @@ const Regster = () => {
 
                     </div>
                 </div>
-            </div>
+            </div >
 
 
-        </div>
+        </div >
     );
 };
 
