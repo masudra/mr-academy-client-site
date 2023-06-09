@@ -1,26 +1,55 @@
 import { useForm } from 'react-hook-form';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginBaner from '../../../../public/login.jpg'
 import Sociallogin from '../Sociallogin';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { AuthContex } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Regster = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [error, setError] = useState('')
-
+    const { updateUser, creatUsr } = useContext(AuthContex)
+    const navigate =useNavigate()
+ 
     const onSubmit = data => {
         console.log(data)
         if (data.password !== data.confirmPassword) {
             setError('password did not match');
             return
-
         }
+
+        creatUsr(data.email, data.password)
+            .then(result => {
+                const loguser = result.user
+
+                updateUser(data.name, data.photo)
+                    .then(() => {
+                        console.log(loguser);
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Your Acount  has been Creatd',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        navigate('/')
+
+
+                    })
+                    .catch(error => {
+                        alert(error.message)
+                    })
+            })
+            .catch(error => {
+                alert(error.message)
+            })
     };
 
     return (
         <div>
-           <Helmet>
+            <Helmet>
                 <title>Mr Academy || Regster </title>
             </Helmet>
             <div className="hero min-h-screen bg-base-200 ">
@@ -54,12 +83,13 @@ const Regster = () => {
                                     <label className="label">
                                         <span className="label-text">Confirm Password</span>
                                     </label>
-                                    <input type="password"  {...register("confirmPassword", { required: true,minLength: 6,maxLength: 20,
+                                    <input type="password"  {...register("confirmPassword", {
+                                        required: true, minLength: 6, maxLength: 20,
                                     })} name="confirmPassword" placeholder="Confir Password" className="input input-bordered" />
                                     {errors.password && <span className='text-red-600'>Password is required </span>}
                                     {errors.password?.type === 'minLength' && <p className='text-red-600' role="alert">Password is required min 6 </p>}
                                     {errors.password?.type === 'maxLength' && <p className='text-red-600' role="alert">Password is required max 20 </p>}
-                                 
+
                                     <p className='text-red-600'>{error}</p>
 
 

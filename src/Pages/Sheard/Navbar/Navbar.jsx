@@ -1,6 +1,27 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContex } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const {user, logOut} = useContext(AuthContex)
+
+  const handelLogout =()=>{
+    logOut()
+    .then(()=>{
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: ' LogOut SuccessFull',
+        showConfirmButton: false,
+        timer: 1500
+    })
+    })
+    .catch(error =>{
+      alert(error.message)
+    })
+
+  }
     const naveitem =<>
     <li><Link to='/'>Home</Link></li>
     <li><Link to='/'>Instructors</Link></li>
@@ -28,12 +49,16 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-  <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-        <div className="w-10 rounded-full">
-          <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-        </div>
-      </label>
-    <Link to='/login' className="btn">Login</Link>
+ {user?<>
+ <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+  <div className="w-10 rounded-full">
+    <img src={user?.photoURL}/>
+  </div>
+</label>
+<button onClick={handelLogout} className="btn">Log Out</button>
+  </>:<>
+  <Link to='/login' className="btn">Login</Link></>
+ }
   </div>
 </div>
             

@@ -1,20 +1,42 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form';
 import loginBaner from '../../../../public/login.jpg'
 import Sociallogin from "../Sociallogin";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
-
-
+import { AuthContex } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [show, setShow] = useState(false)
+    const {login}= useContext(AuthContex)
+    const navigate =useNavigate()
+
 
     const onSubmit = data => {
         console.log(data)
+        login(data.email,data.password)
+        .then(result =>{
+           const logUser = result.user 
+           console.log(logUser);
+           Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: ' LogIn SuccessFull',
+            showConfirmButton: false,
+            timer: 1500
+        })
+           navigate('/')
+        })
+        .catch(error =>{
+            alert(error.message)
+        })
     };
+
+
+
     return (
         <div>
             <Helmet>
