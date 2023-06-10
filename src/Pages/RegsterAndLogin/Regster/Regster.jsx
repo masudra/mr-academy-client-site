@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginBaner from '../../../../public/login.jpg'
 import Sociallogin from '../Sociallogin';
 import { useContext, useState } from 'react';
@@ -12,6 +12,8 @@ const Regster = () => {
     const [error, setError] = useState('')
     const { updateUser, creatUsr } = useContext(AuthContex)
     const navigate =useNavigate()
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
  
     const onSubmit = data => {
         console.log(data)
@@ -34,8 +36,7 @@ const Regster = () => {
                             showConfirmButton: false,
                             timer: 1500
                         })
-                        navigate('/')
-
+                        navigate(from, { replace: true });
 
                     })
                     .catch(error => {

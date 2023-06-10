@@ -9,7 +9,6 @@ const Classes = () => {
         .then(res=> res.json())
         .then(data => setClassData(data))
     },[])
-    console.log(classData);
 
     return (
         <div className="grid md:grid-cols-3">
