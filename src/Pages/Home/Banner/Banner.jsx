@@ -1,12 +1,12 @@
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import logo1 from '../../../../public/bangla.jpg'
-import logo2 from '../../../../public/english.jpg'
-import logo3 from '../../../../public/espanoe.jpg'
-import logo4 from '../../../../public/japan.jpg'
-import logo5 from '../../../../public/koriya.jpg'
-import logo6 from '../../../../public/hindi.jpg'
+import logo1 from '../../../../public/baseball baner.jpg'
+import logo2 from '../../../../public/bsket ball banner.jpg'
+import logo3 from '../../../../public/ice hokey baner.jpg'
+import logo4 from '../../../../public/snooker banner.jpg'
+import logo5 from '../../../../public/sports-–-tennis.jpg'
+import logo6 from '../../../../public/golf baner.jpg'
 
 const Banner = () => {
     
@@ -18,7 +18,7 @@ const Banner = () => {
              <div className="absolute  flex items-center h-full left-0 right-0 top-4 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
                         <div className='text-white space-y-7 ml-4 pl-12 w-1/2'>
                             <h5 className='text-5xl font-bold'>Bangla</h5>
-                            <p>This course is designed to develop studentsproficiency in speaking, reading, writing, and understanding Bangla. </p>
+                            <p>Playing game fresh your mind</p>
                             
                         </div>
                     </div>
