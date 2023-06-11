@@ -2,9 +2,11 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContex } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import useStudentSelected from "../../Hook/useStudentSelected";
 
 const Navbar = () => {
   const {user, logOut} = useContext(AuthContex)
+  const [studentselec] = useStudentSelected()
 
   const handelLogout =()=>{
     logOut()
@@ -27,6 +29,7 @@ const Navbar = () => {
     <li><Link to='/'>Instructors</Link></li>
     <li><Link to='/classes'>Classes</Link></li>
     <li><Link to='/'>Dashboard</Link></li>
+    <h1>{studentselec?.length}</h1>
     </>
     return (
         <div>
