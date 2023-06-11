@@ -8,13 +8,13 @@ import { AuthContex } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const Regster = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [error, setError] = useState('')
     const { updateUser, creatUsr } = useContext(AuthContex)
-    const navigate =useNavigate()
+    const navigate = useNavigate()
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
- 
+
     const onSubmit = data => {
         console.log(data)
         if (data.password !== data.confirmPassword) {
@@ -28,15 +28,30 @@ const Regster = () => {
 
                 updateUser(data.name, data.photo)
                     .then(() => {
-                        console.log(loguser);
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Your Acount  has been Creatd',
-                            showConfirmButton: false,
-                            timer: 1500
+                        const userData = {name:data.name, email: data.email,photoURL: data.photo}
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers:{
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(userData)
+                        
                         })
-                        navigate(from, { replace: true });
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    reset()
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'Your Acount  has been Creatd',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                    navigate(from, { replace: true });
+                                }
+                            })
+
 
                     })
                     .catch(error => {
