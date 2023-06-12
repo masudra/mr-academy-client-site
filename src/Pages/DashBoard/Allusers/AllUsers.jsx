@@ -41,6 +41,41 @@ const AllUsers = () => {
        
     }
 
+    // Handel  Instructor
+
+    const handelMakeInstructor=user =>{
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `Do you want to add ${user.name} as an  Instructor?!`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Make  Instructor It!'
+        })
+
+        .then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/users/instructor/${user._id}`,{
+            method: 'PATCH'
+        })
+                    .then(res => res.json())
+                    .then(data => {
+                        if(data.modifiedCount) {
+                            refetch();
+                            Swal.fire(
+                                'ADD',
+                                '  create successful',
+                                'success'
+                            )
+                        }
+                    })
+            }
+        })
+       
+    }
+
+
 
 
 
@@ -77,12 +112,12 @@ const AllUsers = () => {
                                 </td>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
-                                <td>{user.role == 'admin' ? 'admin' : <button className="btn btn-ghost btn-xs mx-4 bg-[#D1A054] text-white w-12 h-12 text-2xl"><FaUser></FaUser></button>}
+                                <td>{user.role == 'admin' ? 'admin' : user.role== 'instructor'?'instructor': <button className="btn btn-ghost btn-xs mx-4 bg-[#D1A054] text-white w-12 h-12 text-2xl"><FaUser></FaUser></button>}
                                 </td>
 
                                 <td>
                                     <button onClick={()=> handelMakeAdmin(user)} className="btn btn-ghost w-40  my-2 bg-[#D1A054] text-white ">Make Admin</button><br />
-                                    <button className="btn btn-ghost w-40 bg-[#D1A054] text-white">Make Instructor </button></td>
+                                    <button onClick={()=> handelMakeInstructor(user)} className="btn btn-ghost w-40 bg-[#D1A054] text-white">Make Instructor </button></td>
 
                                 <td >
 
