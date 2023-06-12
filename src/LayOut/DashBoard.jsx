@@ -1,9 +1,12 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { FaHome, FaWallet } from 'react-icons/fa';
+import { FaBook, FaBookDead, FaHome, FaMobile, FaShapes, FaShoppingCart, FaUsers, FaWallet } from 'react-icons/fa';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 
 const DashBoard = () => {
+    const isAdmin = true;
+    const isInstructor = false;
+
     return (
         <div>
             <Helmet>
@@ -21,12 +24,52 @@ const DashBoard = () => {
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 h-full bg-[#D1A054] text-black font-bo">
+                        {
+
+
+
+
+
+
+
+
+
+                            isAdmin ? <>
+                                {/* Admin DashBoard */}
+                                <li><NavLink to='/dashboard/'><FaHome></FaHome> Admin Home</NavLink></li>
+                                <li><NavLink to='/dashboard/'><FaBook></FaBook>Manage Classes</NavLink></li>
+                                <li><NavLink to='/dashboard/allusers'><FaUsers></FaUsers>Manage Users</NavLink></li></>
+                                 : isInstructor ? <>
+                                 <li><NavLink to='/dashboard/'><FaHome></FaHome>Instructor  Home</NavLink></li>
+                            <li><NavLink to='/dashboard/'><FaBook></FaBook>Add a Class</NavLink></li>
+                            <li><NavLink to='/dashboard/'><FaShoppingCart></FaShoppingCart>My Classes</NavLink></li>
+                            </> 
+                            : <>
+                                {/* Student DashBoard */}
+                                <li><NavLink to='/dashboard/'><FaHome></FaHome> Home</NavLink></li>
+                                <li><NavLink to='/dashboard/myselectedclass'><FaBook></FaBook>My Selected Classes</NavLink></li>
+                                <li><NavLink to='/dashboard/myenrolledclasses'><FaShoppingCart></FaShoppingCart> My Enrolled Classes</NavLink></li>
+                                <li><NavLink to='/dashboard/history'><FaWallet></FaWallet>Payment history</NavLink></li></>
+
+                                // ******************************
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        }
                         {/* Sidebar content hear */}
-                        <li><NavLink to='/dashboard/'><FaHome></FaHome>Home</NavLink></li>
-                        <li><NavLink to='/dashboard/myselectedclass'>My Selected Classes</NavLink></li>
-                        <li><NavLink to='/dashboard/myenrolledclasses'>My Enrolled Classes</NavLink></li>
-                        <li><NavLink to='/dashboard/history'><FaWallet></FaWallet>Payment history</NavLink></li>
-                       
+
+
                         <div className="divider"></div>
                         <li><Link to='/'><FaHome></FaHome>Main Home</Link></li>
                         <li><Link to='/menu'>Our Menu</Link></li>

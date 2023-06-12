@@ -1,30 +1,39 @@
 import { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { AuthContex } from '../Provider/AuthProvider';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const Sociallogin = () => {
-    const {googleLogIn}=useContext(AuthContex)
-    const navagate = useNavigate()
+    const { googleLogIn } = useContext(AuthContex)
+    const navigate = useNavigate()
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
-    const handelGoogleLogin =()=>{
+    const handelGoogleLogin = () => {
         googleLogIn()
-        .then(result =>{
-            const logUser = result.user 
-            console.log(logUser);
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Google Login SuccessFull',
-                showConfirmButton: false,
-                timer: 1500
+            .then(result => {
+                const logUser = result.user
+                console.log(logUser);
+                const userData = { name: logUser.displayName, email: logUser.email, photoURL: logUser.photoURL }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(userData)
+                })
+                    .then(res => res.json())
+                    .then(() => {
+
+                        navigate(from, { replace: true });
+                    })
+
+
             })
-            navagate('/')
-        })
-        .catch(error =>{
-            alert(error.message)
-        })
+            .catch(error => {
+                alert(error.message)
+            })
     }
     return (
         <div>
