@@ -47,10 +47,6 @@ import AllUsers from "../Pages/DashBoard/Allusers/AllUsers";
           element:<MySelectedClasses></MySelectedClasses>,
         },
         {
-          path: 'myenrolledclass',
-          element: <MyEnrolledClasses></MyEnrolledClasses>,
-        },
-        {
           path: 'myenrolledclasses',
           element: <MyEnrolledClasses></MyEnrolledClasses>,
         },

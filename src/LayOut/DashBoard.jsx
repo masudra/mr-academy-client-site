@@ -26,19 +26,11 @@ const DashBoard = () => {
                     <ul className="menu p-4 w-80 h-full bg-[#D1A054] text-black font-bo">
                         {
 
-
-
-
-
-
-
-
-
                             isAdmin ? <>
                                 {/* Admin DashBoard */}
                                 <li><NavLink to='/dashboard/'><FaHome></FaHome> Admin Home</NavLink></li>
                                 <li><NavLink to='/dashboard/'><FaBook></FaBook>Manage Classes</NavLink></li>
-                                <li><NavLink to='/dashboard/allusers'><FaUsers></FaUsers>Manage Users</NavLink></li></>
+                                <li><NavLink to='/dashboard/allusers'><FaUsers></FaUsers>Manage Users</NavLink></li> </>
                                  : isInstructor ? <>
                                  <li><NavLink to='/dashboard/'><FaHome></FaHome>Instructor  Home</NavLink></li>
                             <li><NavLink to='/dashboard/'><FaBook></FaBook>Add a Class</NavLink></li>
@@ -51,20 +43,7 @@ const DashBoard = () => {
                                 <li><NavLink to='/dashboard/myenrolledclasses'><FaShoppingCart></FaShoppingCart> My Enrolled Classes</NavLink></li>
                                 <li><NavLink to='/dashboard/history'><FaWallet></FaWallet>Payment history</NavLink></li></>
 
-                                // ******************************
-                            
-
-
-
-
-
-
-
-
-
-
-
-
+                    
 
                         }
                         {/* Sidebar content hear */}
