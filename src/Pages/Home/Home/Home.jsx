@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import Banner from "../Banner/Banner";
+import SuccessfulPlayer from "../ExtaSwction/SuccessfulPlayer";
 
 const Home = () => {
     return (
@@ -8,6 +9,7 @@ const Home = () => {
                 <title>Mr Academy || Home </title>
             </Helmet>
             <Banner></Banner>
+            <SuccessfulPlayer></SuccessfulPlayer>
         </div>
     );
 };
