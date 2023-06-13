@@ -2,9 +2,12 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { FaBook, FaBookDead, FaHome, FaMobile, FaShapes, FaShoppingCart, FaUsers, FaWallet } from 'react-icons/fa';
 import { Link, NavLink, Outlet } from 'react-router-dom';
+import useAdmin from '../Pages/Hook/useAdmin';
 
 const DashBoard = () => {
-    const isAdmin = true;
+    // const isAdmin = true;
+    const [isAdmin] = useAdmin()
+    
     const isInstructor = false;
 
     return (
