@@ -17,7 +17,7 @@ const Banner = () => {
             <img  src={logo1} />
              <div className="absolute  flex items-center h-full left-0 right-0 top-4 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
                         <div className='text-white space-y-7 ml-4 pl-12 w-1/2'>
-                            <h5 className='text-5xl font-bold'>Bangla</h5>
+                            <h5 className='text-5xl font-bold'></h5>
                             <p>Playing game fresh your mind</p>
                             
                         </div>

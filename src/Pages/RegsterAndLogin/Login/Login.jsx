@@ -33,7 +33,11 @@ const Login = () => {
         navigate(from, { replace: true });
         })
         .catch(error =>{
-            alert(error.message)
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: `${error.message}`,
+              })
         })
     };
 

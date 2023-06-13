@@ -1,17 +1,19 @@
 import { useQuery } from '@tanstack/react-query'
 import useAxiosSecure from './useAxiosSecure';
-import useAuth from './useAuth';
+import { useContext } from 'react';
+import { AuthContex } from '../Provider/AuthProvider';
 
 const useStudentSelected = email => {
  
-    const {user}=useAuth()
-    const [axiosSecure] = useAxiosSecure()
+    const {user}=useContext(AuthContex);
+    const [axiosSecure] = useAxiosSecure();
     // const token =localStorage.getItem('access-token')
 
     const { refetch, data: studentselect=[] } = useQuery({
         queryKey: ['studentselect',user?.email],
+        enabled:!!user?.email && !!localStorage.getItem('access-token'),
         // queryFn: async()=>{
-        //   const res = await fetch(`http://localhost:5000/studentSelect?email=${user?.email}`,{
+        //   const res = await fetch(`http://localhost:5000/studentselect?email=${user?.email}`,{
         //     headers:{
               
         //       authorization:`berarer${token}`
@@ -20,7 +22,7 @@ const useStudentSelected = email => {
         //   return res.json()
         // }
         queryFn: async()=>{
-          const res = await axiosSecure(`/studentSelect?email=${user?.email}`)
+          const res = await axiosSecure(`/studentselect?email=${user?.email}`)
           return res.data
         }
       })

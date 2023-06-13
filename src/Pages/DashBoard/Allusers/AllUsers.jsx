@@ -86,7 +86,7 @@ const AllUsers = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr className='bg-[#D1A054] font-bold text-black'>
+                        <tr className='bg-sky-500  font-bold text-black'>
 
                             <th>NO:</th>
                             <th>USER PHOTO</th>
@@ -112,12 +112,12 @@ const AllUsers = () => {
                                 </td>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
-                                <td>{user.role == 'admin' ? 'admin' : user.role== 'instructor'?'instructor': <button className="btn btn-ghost btn-xs mx-4 bg-[#D1A054] text-white w-12 h-12 text-2xl"><FaUser></FaUser></button>}
+                                <td>{user.role == 'admin' ? 'admin' : user.role== 'instructor'?'instructor': <button className="btn btn-ghost btn-xs mx-4 bg-sky-500  text-white w-12 h-12 text-2xl"><FaUser></FaUser></button>}
                                 </td>
 
                                 <td>
-                                    <button onClick={()=> handelMakeAdmin(user)} className="btn btn-ghost w-40  my-2 bg-[#D1A054] text-white ">Make Admin</button><br />
-                                    <button onClick={()=> handelMakeInstructor(user)} className="btn btn-ghost w-40 bg-[#D1A054] text-white">Make Instructor </button></td>
+                                    <button onClick={()=> handelMakeAdmin(user)} className="btn btn-ghost w-40  my-2 bg-sky-500  text-white ">Make Admin</button><br />
+                                    <button onClick={()=> handelMakeInstructor(user)} className="btn btn-ghost w-40 bg-sky-500  text-white">Make Instructor </button></td>
 
                                 <td >
 

@@ -55,11 +55,19 @@ const Regster = () => {
 
                     })
                     .catch(error => {
-                        alert(error.message)
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: `${error.message}`,
+                          })
                     })
             })
             .catch(error => {
-                alert(error.message)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${error.message}`,
+                  })
             })
     };
 

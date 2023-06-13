@@ -50,7 +50,7 @@ const MySelectedClasses = () => {
                  <table className="table">
                      {/* head */}
                      <thead>
-                         <tr className='bg-[#D1A054] font-bold text-black'>
+                         <tr className='bg-sky-500  font-bold text-black'>
 
                              <th>NO:</th>
                              <th>CLASSES IMAGE</th>

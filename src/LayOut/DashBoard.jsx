@@ -23,7 +23,7 @@ const DashBoard = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 h-full bg-[#D1A054] text-black font-bo">
+                    <ul className="menu p-4 w-80 h-full bg-sky-500  text-black font-bo">
                         {
 
                             isAdmin ? <>
