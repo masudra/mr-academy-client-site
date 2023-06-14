@@ -3,7 +3,6 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import logo1 from '../../../../public/baseball baner.jpg'
 import logo2 from '../../../../public/sports-–-tennis.jpg'
 import logo3 from '../../../../public/ice hokey baner.jpg'
-// import logo4 from '../../../../public/snooker banner.jpg'
 import logo5 from '../../../../public/golf baner.jpg'
 
 const Banner = () => {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Class from "./Class";
+import Class from "./class";
 
 const Classes = () => {
     const [classData, setClassData]= useState([])

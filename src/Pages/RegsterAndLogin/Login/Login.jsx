@@ -18,6 +18,7 @@ const Login = () => {
 
 
     const onSubmit = data => {
+
         console.log(data)
         login(data.email,data.password)
         .then(result =>{
@@ -38,6 +39,7 @@ const Login = () => {
                 title: 'Oops...',
                 text: `${error.message}`,
               })
+             
         })
     };
 

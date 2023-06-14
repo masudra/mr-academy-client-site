@@ -7,11 +7,15 @@ import useAuth from '../Pages/Hook/useAuth';
 import useInstructor from '../Pages/Hook/useInstructor';
 
 const DashBoard = () => {
-    const {user}= useAuth()
+    const {user ,loading}= useAuth()
     // const isAdmin = true;
     // const isInstructor = false;
     const [isAdmin] = useAdmin();
     const [isInstructor] =useInstructor();
+
+    if(loading && !!user){
+        return <h1>lodaing</h1>
+    }
     
 
     return (

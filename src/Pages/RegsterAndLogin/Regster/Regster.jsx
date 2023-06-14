@@ -28,14 +28,14 @@ const Regster = () => {
 
                 updateUser(data.name, data.photo)
                     .then(() => {
-                        const userData = {name:data.name, email: data.email,photoURL: data.photo}
+                        const userData = { name: data.name, email: data.email, photoURL: data.photo }
                         fetch('http://localhost:5000/users', {
                             method: 'POST',
-                            headers:{
+                            headers: {
                                 'content-type': 'application/json'
                             },
                             body: JSON.stringify(userData)
-                        
+
                         })
                             .then(res => res.json())
                             .then(data => {
@@ -59,7 +59,7 @@ const Regster = () => {
                             icon: 'error',
                             title: 'Oops...',
                             text: `${error.message}`,
-                          })
+                        })
                     })
             })
             .catch(error => {
@@ -67,7 +67,7 @@ const Regster = () => {
                     icon: 'error',
                     title: 'Oops...',
                     text: `${error.message}`,
-                  })
+                })
             })
     };
 
