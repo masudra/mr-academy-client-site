@@ -35,7 +35,8 @@ import AllUsers from "../Pages/DashBoard/Allusers/AllUsers";
         {
           path: '/classes',
           element: <Class></Class>,
-        }
+        },
+        
       ]
     },
     {
