@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import useAuth from '../../Hook/useAuth';
+import Swal from 'sweetalert2';
 
 const AddClasses = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -7,7 +8,7 @@ const AddClasses = () => {
 
     const onSubmit = data => {
        
-        const{Price,Available_seats,image,name,instructor_name,email}=  data
+        const{Price,Available_seats,image,name,instructor_name,email ,_id}=  data
         const price = parseFloat(Price)
         const available_seats = parseFloat(Available_seats)
 
@@ -28,6 +29,14 @@ const AddClasses = () => {
             })
                 .then(res => res.json())
                 .then(data => {
+                    if(data.insertedId)
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: ' Class Add SuccessFull',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                     console.log(data)}
                     )
 
@@ -60,14 +69,14 @@ const AddClasses = () => {
                                 <label className="label">
                                     <span className="label-text">Instructor name</span>
                                 </label>
-                                <input type="text"  {...register("instructor_name", { required: true })} placeholder="Instructor name" name="instructor_name" className="input input-bordered" required />
+                                <input type="text" defaultValue={user?.displayName}  {...register("instructor_name", { required: true })} placeholder="Instructor name" name="instructor_name" className="input input-bordered" required />
                             </div>
                             {/*  */}
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Instructor Email</span>
                                 </label>
-                                <input type="email" {...register("email", { required: true })} placeholder="Instructor email" name="email" className="input input-bordered" required />
+                                <input type="email" defaultValue={user?.email} {...register("email", { required: true })} placeholder="Instructor email" name="email"  className="input input-bordered" required />
                             </div>
 
                             {/*  */}
