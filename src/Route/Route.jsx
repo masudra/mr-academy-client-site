@@ -12,6 +12,8 @@ import MySelectedClasses from "../Pages/DashBoard/MySelectedClasses/MySelectedCl
 import MyEnrolledClasses from "../Pages/DashBoard/MyEnrolledClasses/MyEnrolledClasses";
 import PrivateRoute from "./PrivateRoute";
 import AllUsers from "../Pages/DashBoard/Allusers/AllUsers";
+import MyClasses from "../Pages/DashBoard/Instructor/MyClasses";
+import AddClasses from "../Pages/DashBoard/Instructor/AddClasses";
 
    export const router = createBrowserRouter([
     {
@@ -54,6 +56,16 @@ import AllUsers from "../Pages/DashBoard/Allusers/AllUsers";
         {
           path: 'allusers',
           element: <AllUsers></AllUsers>,
+        },
+        {
+          path: 'myclassess',
+          element: <MyClasses></MyClasses>
+
+        },
+        {
+          path: 'addclasses',
+          element: <AddClasses></AddClasses>
+
         }
       ]
     }

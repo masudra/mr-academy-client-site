@@ -2,7 +2,6 @@ import React from 'react';
 
 const PopularClassCart = ({populersix}) => {
     const { name, image, instructor_name, available_seats, price, _id } = populersix;
-    console.log((available_seats));
 
     return (
         <div >

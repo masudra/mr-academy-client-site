@@ -50,10 +50,11 @@ const DashBoard = () => {
                                 <li><NavLink to='/dashboard/'><FaBook></FaBook>Manage Classes</NavLink></li>
                                 <li><NavLink to='/dashboard/allusers'><FaUsers></FaUsers>Manage Users</NavLink></li> </>
                                  : isInstructor ? <>
-                                 
+                                 {/*  isInstructor 
+                                  */}
                               
-                            <li><NavLink to='/dashboard/'><FaBook></FaBook>Add a Class</NavLink></li>
-                            <li><NavLink to='/dashboard/'><FaShoppingCart></FaShoppingCart>My Classes</NavLink></li>
+                            <li><NavLink to='/dashboard/addclasses'><FaBook></FaBook>Add a Class</NavLink></li>
+                            <li><NavLink to='/dashboard/myclassess'><FaShoppingCart></FaShoppingCart>My Classes</NavLink></li>
                             </> 
                             : <>
                                 {/* Student DashBoard */}

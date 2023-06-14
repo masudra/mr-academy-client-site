@@ -5,6 +5,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useStudentSelected from "../Hook/useStudentSelected";
 
 const Class = ({ singelClass }) => {
+    console.log(singelClass);
+    
     const { name, image, instructor_name, available_seats, price, _id } = singelClass
     const { user } = useContext(AuthContex)
     const [,refetch]=useStudentSelected()
@@ -62,7 +64,7 @@ const Class = ({ singelClass }) => {
                     <h2 className="card-title">Name: {name}</h2>
                     <h2 className="card-title">Instructor name:{instructor_name}</h2>
                     <h2 className="card-title">Available seats:{available_seats}</h2>
-                    <h2 className="card-title">Price: ${price}</h2>
+                    <h2 className="card-title">Price: $ {price}</h2>
 
                     <div className="card-actions justify-center">
                         <button onClick={() => handelSelectBtn(singelClass)} className="btn btn-primary">Select Now</button>
