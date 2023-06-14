@@ -17,7 +17,7 @@ const Class = ({ singelClass }) => {
         console.log(classData);
         if (user && user?.email) {
             const studentItem = { studentItemId: _id, name, image, instructor_name, available_seats, price, email: user?.email }
-            fetch('http://localhost:5000/studentSelect', {
+            fetch('https://mr-academy-server.vercel.app/studentSelect', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

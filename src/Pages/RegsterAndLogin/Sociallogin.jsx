@@ -16,7 +16,7 @@ const Sociallogin = () => {
                 const logUser = result.user
                 console.log(logUser);
                 const userData = { name: logUser.displayName, email: logUser.email, photoURL: logUser.photoURL }
-                fetch('http://localhost:5000/users', {
+                fetch('https://mr-academy-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

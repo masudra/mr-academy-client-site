@@ -19,7 +19,7 @@ const MySelectedClasses = () => {
         })
         .then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/studentSelect/${item?._id}`, {
+                fetch(`https://mr-academy-server.vercel.app/studentSelect/${item?._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

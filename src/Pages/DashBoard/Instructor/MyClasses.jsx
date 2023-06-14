@@ -5,7 +5,7 @@ const MyClasses = () => {
     const { user } = useAuth()
     const [myClasses, setMyClasses] = useState([])
 
-    const url = `http://localhost:5000/classes?email=${user?.email}`;
+    const url = `https://mr-academy-server.vercel.app/classes?email=${user?.email}`;
     useEffect(() => {
         fetch(url)
             .then(res => res.json())

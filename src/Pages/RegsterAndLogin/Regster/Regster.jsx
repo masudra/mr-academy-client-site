@@ -29,7 +29,7 @@ const Regster = () => {
                 updateUser(data.name, data.photo)
                     .then(() => {
                         const userData = { name: data.name, email: data.email, photoURL: data.photo }
-                        fetch('http://localhost:5000/users', {
+                        fetch('https://mr-academy-server.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'

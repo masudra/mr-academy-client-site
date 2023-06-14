@@ -20,7 +20,7 @@ const AddClasses = () => {
             email
         }
         
-            fetch('http://localhost:5000/classes', {
+            fetch('https://mr-academy-server.vercel.app/classes', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

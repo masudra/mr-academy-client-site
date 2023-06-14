@@ -49,7 +49,7 @@ const AuthProvider = ({children}) => {
             setUser(currentuser)
             setLoading(false)
             if(currentuser){
-                axios.post('http://localhost:5000/jwt',{email: currentuser.email})
+                axios.post('https://mr-academy-server.vercel.app/jwt',{email: currentuser.email})
                 .then(data =>{
                     // console.log(data.data.token);
                     localStorage.setItem('access-token',data.data.token)
